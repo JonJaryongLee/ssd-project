@@ -146,6 +146,11 @@ int data_valid_check(char *data)
         return 0;
     }
 
+	if (data[0] != '0' || data[1] != 'x')
+	{
+		return 0;
+	}
+
     for (int i = 2; i < strlen(data); i++)
     {
         if (!isxdigit(data[i]))
