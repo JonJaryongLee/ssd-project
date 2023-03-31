@@ -17,16 +17,17 @@ void help()
 {
     printf("\n\n");
     printf("테스트 셸 매뉴얼\n\n");
-    printf("write \n");
-    printf("    write LBA주소 4바이트값\n");
-    printf("    * ex) write 3 0xABCDABCD\n");
+    printf("* 최초 실행 시 fullwrite 명령어를 입력해 nand.txt 파일을 생성하세요.\n\n");
+    printf("W \n");
+    printf("    W LBA주소 4바이트값\n");
+    printf("    * ex) W 3 0xABCDABCD\n");
     printf("    * LBA 주소는 0 - 99 사이입니다.\n");
     printf("    * 반드시 0xAAAAAAAA 형식의 16진수 10글자로 입력합니다.\n");
     printf("    * 결과는 nand.txt 에 기록됩니다.\n");
     printf("\n");
-    printf("read \n");
-    printf("    read LBA주소\n");
-    printf("    ex) write 4\n");
+    printf("R \n");
+    printf("    R LBA주소\n");
+    printf("    ex) R 4\n");
     printf("    * 결과는 result.txt 에 작성됩니다.\n");
     printf("\n");
     printf("fullwrite \n");
@@ -146,10 +147,10 @@ int data_valid_check(char *data)
         return 0;
     }
 
-	if (data[0] != '0' || data[1] != 'x')
-	{
-		return 0;
-	}
+    if (data[0] != '0' || data[1] != 'x')
+    {
+        return 0;
+    }
 
     for (int i = 2; i < strlen(data); i++)
     {
@@ -172,6 +173,7 @@ int data_valid_check(char *data)
 
 int main()
 {
+    printf("최초 실행 시 fullwrite 명령어를 입력해 nand.txt 파일을 생성하세요.\n");
     char buf[10];
     while (1)
     {
